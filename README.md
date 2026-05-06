@@ -32,8 +32,9 @@ Response JSON  →  caller
 ## Quick Start
 
 ### Prerequisites
+
 - Python 3.11+
-- [uv](https://docs.astral.sh/uv/) installed
+- install [uv](https://docs.astral.sh/uv/)
 
 ### Setup
 
@@ -57,12 +58,12 @@ The API will be available at `http://localhost:8000`.
 
 ### API Endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| POST | `/chat` | Submit a support query |
-| GET | `/health` | Liveness probe |
-| GET | `/ready` | Readiness probe |
-| POST | `/feedback` | Submit run feedback |
+| Method | Path        | Description            |
+| ------ | ----------- | ---------------------- |
+| POST   | `/chat`     | Submit a support query |
+| GET    | `/health`   | Liveness probe         |
+| GET    | `/ready`    | Readiness probe        |
+| POST   | `/feedback` | Submit run feedback    |
 
 ### Example Request
 
@@ -107,11 +108,11 @@ make typecheck
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `OPENAI_API_KEY` | Yes | OpenAI API key |
-| `API_KEY` | Yes | Bearer token for API authentication |
-| `LANGCHAIN_API_KEY` | No | LangSmith API key for tracing |
-| `LANGCHAIN_TRACING_V2` | No | Enable LangSmith tracing |
-| `MODEL_NAME` | No | OpenAI model (default: `gpt-4o-mini`) |
-| `POSTGRES_DSN` | No | PostgreSQL DSN for persistent checkpointing |
+| Variable               | Required | Description                                 |
+| ---------------------- | -------- | ------------------------------------------- |
+| `OPENAI_API_KEY`       | Yes      | OpenAI API key                              |
+| `API_KEY`              | Yes      | Bearer token for API authentication         |
+| `LANGCHAIN_API_KEY`    | No       | LangSmith API key for tracing               |
+| `LANGCHAIN_TRACING_V2` | No       | Enable LangSmith tracing                    |
+| `MODEL_NAME`           | No       | OpenAI model (default: `gpt-4o-mini`)       |
+| `POSTGRES_DSN`         | No       | PostgreSQL DSN for persistent checkpointing |
