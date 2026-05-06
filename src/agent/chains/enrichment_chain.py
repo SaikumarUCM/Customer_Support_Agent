@@ -5,6 +5,7 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
+from langchain_core.runnables import Runnable
 
 from agent.core.config import get_settings
 from agent.schemas.enriched import CustomerQuery
@@ -19,7 +20,7 @@ def _render_enrich_prompt(user_input: UserInput) -> str:
     return template.render(message=user_input.message)
 
 
-def build_enrichment_chain() -> object:
+def build_enrichment_chain() -> Runnable:
     """Return a runnable chain: UserInput → CustomerQuery."""
     settings = get_settings()
 
@@ -40,10 +41,10 @@ def build_enrichment_chain() -> object:
 
 
 # Singleton — built once per process
-_enrichment_chain = None
+_enrichment_chain: Runnable | None = None
 
 
-def get_enrichment_chain() -> object:
+def get_enrichment_chain() -> Runnable:
     global _enrichment_chain
     if _enrichment_chain is None:
         _enrichment_chain = build_enrichment_chain()

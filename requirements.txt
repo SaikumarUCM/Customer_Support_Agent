@@ -1,0 +1,12 @@
+fastapi>=0.136.1
+pydantic>=2.13.4
+pydantic-settings>=2.14.0
+jinja2
+langchain-core
+langchain-openai
+langgraph
+starlette
+typing-extensions
+structlog
+pytest
+langsmith

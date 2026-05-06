@@ -27,10 +27,10 @@ test-fast:
 
 # ── Run ───────────────────────────────────────────────────────────────────────
 run:
-	uv run uvicorn src.agent.api.app:create_app --factory --host 0.0.0.0 --port 8000 --reload
+	uv run uvicorn agent.api.app:create_app --factory --host 0.0.0.0 --port 8000 --reload --app-dir src
 
 run-prod:
-	uv run uvicorn src.agent.api.app:create_app --factory --host 0.0.0.0 --port 8000 --workers 4
+	uv run uvicorn agent.api.app:create_app --factory --host 0.0.0.0 --port 8000 --workers 4 --app-dir src
 
 # ── Docker ────────────────────────────────────────────────────────────────────
 docker-build:

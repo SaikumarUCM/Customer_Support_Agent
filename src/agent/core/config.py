@@ -1,6 +1,7 @@
 from functools import lru_cache
 from typing import Literal
 
+from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -17,7 +18,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
 
     # ── LLM ───────────────────────────────────────────────────────────────────
-    openai_api_key: str
+    openai_api_key: SecretStr
     model_name: str = "gpt-4o-mini"
     model_temperature: float = 0.2
 
