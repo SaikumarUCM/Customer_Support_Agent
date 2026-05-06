@@ -1,7 +1,7 @@
 """create_support_ticket tool — creates a support ticket for high-priority queries.
 
 In a real deployment this would call a ticketing system (e.g. Zendesk, Jira).
-Here we generate a deterministic stub ticket so the project runs offline.
+Here we generate a deterministic stub ticket to the project
 """
 
 import hashlib
