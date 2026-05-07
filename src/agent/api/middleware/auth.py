@@ -1,5 +1,6 @@
 """API key / Bearer token authentication middleware."""
 
+import hmac
 from fastapi import Request, status
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
@@ -32,12 +33,13 @@ class AuthMiddleware(BaseHTTPMiddleware):
         elif auth_header.startswith("Bearer "):
             token = auth_header[7:]
 
-        if not token or token != settings.api_key:
+        if not token or not hmac.compare_digest(token.encode(), settings.api_key.encode()):
             log.warning(
-                "auth: rejected request",
+                "auth: f'rejected request with invalid API key",
                 path=request.url.path,
                 ip=request.client.host if request.client else "unknown",
             )
+            log.info(token=token)  # log the invalid token for debugging (don't log in production!)
             return JSONResponse(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 content={"detail": "Invalid or missing API key"},

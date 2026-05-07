@@ -14,6 +14,9 @@ async def compose_response_node(state: AgentState) -> dict:
     faq_results = state.get("faq_results", [])
     ticket = state.get("support_ticket")
 
+    if customer_query is None:
+        raise ValueError("customer_query is required to compose a response")
+
     log.info(
         "compose_response: start",
         has_faq=bool(faq_results),
